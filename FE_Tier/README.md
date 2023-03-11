@@ -16,4 +16,3 @@
 * Public Subnets association to the Route Table
 
 * Security group ( HTTP & SSH to open to 0.0.0.0/0 )
-* Launch Template with Bootstrap script to install & launch Apache -- user data config
