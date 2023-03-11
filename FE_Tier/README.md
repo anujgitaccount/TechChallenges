@@ -1,4 +1,4 @@
-# cft resources used in this tier 
+# resources used to create FE tier 
 
 * VPC
 * Route Table
