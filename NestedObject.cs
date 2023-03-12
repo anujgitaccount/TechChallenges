@@ -14,7 +14,7 @@ namespace GetNestedValueByKey {
                 return current;
             }
             
-            /*Tests*/
+            /*Testing with Various Inputs*/
             JObject obj = JObject.Parse("{\"a\":{\"b\":{\"c\":\"d\"}}}");
             var value = GetValueByKey(obj, "a/b/c");
             Console.WriteLine(value); // Output: "d"
