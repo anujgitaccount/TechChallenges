@@ -1,22 +1,26 @@
 # TODO:
-We need to write code that will query the meta data of an instance within AWS or Azure or GCP and provide a json formatted output. 
+
+# Challenge3:
+
+We have a nested object. We would like a function where you pass in the object and a key and get back the value. 
 The choice of language and implementation is up to you.
 
-Bonus Points
-The code allows for a particular data key to be retrieved individually
-Hints
-*  Aws Documentation (https://docs.aws.amazon.com/)
-*  Azure Documentation (https://docs.microsoft.com/en-us/azure/?product=featured)
-*  Google Documentation (https://cloud.google.com/docs)
-
-# About Metadata of an Instance:
-The Azure Instance metadata service is a REST endpoint that allows us to get all the information of an Azure instance - OS details, storage, SKUs etc. This is available at the non-routable, static IP address 169.254.169.254 and can be accessed from within a VM only.
+Example Inputs
+object = {“a”:{“b”:{“c”:”d”}}}
+key = a/b/c
+object = {“x”:{“y”:{“z”:”a”}}}
+key = x/y/z
+value = a
 
 # Approach:
-* For the purpose of the first part of the ask, I created a simple GET call to the uri "http://169.254.169.254/metadata/instance?api-version=2020-06-01 " and because     this was a powershell script, it is very simple to parse this output as a json object, simply by pipingthe output to ConvertTo-Json. This allows us to use this in     Functions easily.
-  The script can be run inside any VM and will give all the metadata information of that VM. (GetInstanceMetadata.ps1)
-  
- * This can also be converted into .bat file to make more easier while running, Just double click and the batch file will launch PowerShell and execute the script with the specified execution policy
-# Bonus
- * Similary,to retrieve a key from the metdata REST response, I created a script that accepts the inputs from users and returns the value of the key you are looking for. (GetInstanceMetadataValue.ps1)
- * Same we , we can save this file with .bat extension to run more easily.
+* I am using the C# language as my programming background is .NET (C#). I have create a method which takes two parameters(object and key) and once the method is called   then we can split the key by "/" and check each level of the object. JObject class from the Newtonsoft.Json Nuget package can be used to parse and navigate a JSON     object.
+* The function "GetValueByKey(JObject obj, string key), splits the key by '/' character, iterate over the keys array and on each iteration, it uses the key to get the   value at that key, until it reaches the last key. The value at the last key will be returned and if the key not found, it will return key does not exist.
+
+# Test Scenarios:
+
+            JObject obj = JObject.Parse("{\"a\":{\"b\":{\"c\":\"d\"}}}");
+            var value = GetValueByKey(obj, "a/b/c");
+            Console.WriteLine(value); // Output: "d"
+            obj = JObject.Parse("{\"x\":{\"y\":{\"z\":\"a\"}}}");
+            value = GetValueByKey(obj, "x/y/z");
+            Console.WriteLine(value); // Output: "a"
