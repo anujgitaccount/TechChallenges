@@ -5,6 +5,6 @@ The choice of language and implementation is up to you.
 Bonus Points
 The code allows for a particular data key to be retrieved individually
 Hints
-·         Aws Documentation (https://docs.aws.amazon.com/)
-·         Azure Documentation (https://docs.microsoft.com/en-us/azure/?product=featured)
-·         Google Documentation (https://cloud.google.com/docs)
+* Aws Documentation (https://docs.aws.amazon.com/)
+* Azure Documentation (https://docs.microsoft.com/en-us/azure/?product=featured)
+* Google Documentation (https://cloud.google.com/docs)
