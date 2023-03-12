@@ -13,5 +13,10 @@ Hints
 The Azure Instance metadata service is a REST endpoint that allows us to get all the information of an Azure instance - OS details, storage, SKUs etc. This is available at the non-routable, static IP address 169.254.169.254 and can be accessed from within a VM only.
 
 # Approach:
-For the purpose of the first part of the ask, I created a simple GET call to the uri "http://169.254.169.254/metadata/instance?api-version=2020-06-01 " and because this was a powershell script, it is very simple to parse this output as a json object, simply by pipingthe output to ConvertTo-Json. This allows us to use this in Functions easily.
-The script can be run inside any VM and will give all the metadata information of that VM. (GetInstanceMetadata.ps1)
+* For the purpose of the first part of the ask, I created a simple GET call to the uri "http://169.254.169.254/metadata/instance?api-version=2020-06-01 " and because     this was a powershell script, it is very simple to parse this output as a json object, simply by pipingthe output to ConvertTo-Json. This allows us to use this in     Functions easily.
+  The script can be run inside any VM and will give all the metadata information of that VM. (GetInstanceMetadata.ps1)
+  
+ * This can also be converted into .bat file to make more easier while running, Just double click and the batch file will launch PowerShell and execute the script with the specified execution policy
+# Bonus
+ * Similary,to retrieve a key from the metdata REST response, I created a script that accepts the inputs from users and returns the value of the key you are looking for. (GetInstanceMetadataValue.ps1)
+ * Same we , we can save this file with .bat extension to run more easily.
